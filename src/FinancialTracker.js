@@ -429,6 +429,19 @@ const FinancialTracker = () => {
               width: `${(monthsArray.length / 12) * 100}%`,
               minWidth: '100%'
             }}>
+              {/* Month divider lines */}
+              {monthsArray.map((month, index) => (
+                <div key={`divider-${month}`} style={{
+                  position: 'absolute',
+                  left: `${(index / monthsArray.length) * 100}%`,
+                  top: '0px',
+                  width: '1px',
+                  height: '100%',
+                  backgroundColor: '#ccc',
+                  zIndex: 1
+                }} />
+              ))}
+              
               {/* Month headers */}
               {monthsArray.map((month, index) => {
                 const monthDate = new Date(month + '-01');
@@ -448,7 +461,8 @@ const FinancialTracker = () => {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    backgroundColor: '#fff'
+                    backgroundColor: '#fff',
+                    zIndex: 2
                   }}>
                     <div style={{ fontSize: '12px', fontWeight: 'bold' }}>
                       {monthLabel}
